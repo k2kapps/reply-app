@@ -38,6 +38,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.reply.R
 import com.example.reply.data.Email
 
@@ -49,25 +50,26 @@ fun ReplySearchBar(modifier: Modifier = Modifier) {
             .padding(16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Icon(
+       /* Icon(
             imageVector = Icons.Default.Search,
             contentDescription = stringResource(id = R.string.search),
             modifier = Modifier.padding(start = 16.dp),
-        )
+        )*/
         Text(
-            text = stringResource(id = R.string.search_replies),
+            text = "Royal Palm",fontSize =22.sp,
+         //   text = stringResource(id = R.string.search_replies),
             modifier = Modifier
                 .weight(1f)
                 .padding(16.dp),
             style = MaterialTheme.typography.bodyMedium,
         )
-        ReplyProfileImage(
-            drawableResource = R.drawable.avatar_6,
-            description = stringResource(id = R.string.profile),
-            modifier = Modifier
-                .padding(12.dp)
-                .size(32.dp)
-        )
+      //  ReplyProfileImage(
+      //      drawableResource = R.drawable.avatar_6,
+        //    description = stringResource(id = R.string.profile),
+          //  modifier = Modifier
+            //    .padding(12.dp)
+              //  .size(32.dp)
+       // )
     }
 }
 

@@ -49,11 +49,12 @@ fun EmptyComingSoon(
         )
         Text(
             modifier = Modifier.padding(horizontal = 8.dp),
-            text = stringResource(id = R.string.empty_screen_subtitle),
+            text = stringResource(id = R.string.empty_screen_title),
             style = MaterialTheme.typography.bodySmall,
             textAlign = TextAlign.Center,
             color = MaterialTheme.colorScheme.outline
         )
+        Text(text = "Hello World")
     }
 }
 

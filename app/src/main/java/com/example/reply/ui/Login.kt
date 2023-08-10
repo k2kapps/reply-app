@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -44,6 +45,9 @@ import androidx.compose.material3.DatePicker
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberDatePickerState
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
 import com.example.reply.ui.Client.client
 
 private lateinit var viewModel: AccountsViewModel
@@ -75,13 +79,16 @@ class Login : ComponentActivity() {
 @Composable
 fun Greeting(value:String) {
 
-    Column(modifier = Modifier.padding(16.dp)){
+    Column(modifier = Modifier
+        .padding(16.dp)
+        .background(color = Color.Transparent)
+        .fillMaxSize()){
         //DateSelect()
         //Spacer(modifier = Modifier.height(10.dp))
-        Text(text = "Welcome,", fontWeight = FontWeight.Bold, fontSize = 16.sp)
+        Text(text = "Welcome,", fontWeight = FontWeight.Bold, fontSize = 30.sp,)
         Spacer(modifier = Modifier.height(10.dp))
-        Text(text = "Sign in to continue,", fontWeight = FontWeight.Bold, fontSize = 20.sp, color = Color.DarkGray)
-        Spacer(modifier = Modifier.height(110.dp))
+        Text(text = "Sign in to continue,", fontWeight = FontWeight.Bold, fontSize = 20.sp, textDecoration = TextDecoration.Underline)
+        Spacer(modifier = Modifier.height(50.dp))
         RegisterEmail()
         Spacer(modifier = Modifier.height(10.dp))
         RegisterPassword()
@@ -164,27 +171,28 @@ fun RegisterPassword(emailState : TextFieldState = remember { TextFieldState() }
             }
         )
     )
-
-    Button(onClick = {
-        //your onclick code here
-        viewModel = AccountsViewModel()
-        var data:Int=0
-        var n1= viewModel.onLogin(text1, password)
-        //Log.i("data",text1+"----"+password)
-        /*
-        if (n1==2){
-            Toast.makeText(context, "Error...", Toast.LENGTH_SHORT).show()
+    Spacer(modifier = Modifier.height(40.dp))
+        Button(onClick = {
+            //your onclick code here
+            viewModel = AccountsViewModel()
+            var data:Int=0
+            var n1= viewModel.onLogin(text1, password)
+            //Log.i("data",text1+"----"+password)
+            /*
+            if (n1==2){
+                Toast.makeText(context, "Error...", Toast.LENGTH_SHORT).show()
+            }
+            if (n1==1){
+                Toast.makeText(context, "Succuss...", Toast.LENGTH_SHORT).show()
+            }*/
+            context.startActivity(Intent(context, MainActivity::class.java))
+        }) {
+            Text(text = "Click Next",
+            fontSize = 20.sp)
         }
-        if (n1==1){
-            Toast.makeText(context, "Succuss...", Toast.LENGTH_SHORT).show()
-        }*/
-        context.startActivity(Intent(context, MainActivity::class.java))
-    }) {
-        Text(text = "Simple Button")
+
     }
 
-
-}
 
 
 

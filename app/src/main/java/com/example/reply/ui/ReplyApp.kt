@@ -32,11 +32,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import com.example.reply.R
+import com.example.reply.SecondScreen
+import com.example.reply.*
 
 @Composable
 fun ReplyApp(
@@ -59,7 +60,7 @@ fun ReplyAppContent(
     navigateToDetail: (Long) -> Unit,
 ) {
 
-    val selectedDestination = remember { mutableStateOf(ReplyRoute.INBOX) }
+    val selectedDestination = remember { mutableStateOf(ReplyRoute.INBOX)}
 
     Column(
         modifier = modifier
@@ -74,7 +75,7 @@ fun ReplyAppContent(
                 modifier = Modifier.weight(1f)
             )
         } else {
-            EmptyComingSoon(modifier = Modifier.weight(1f))
+            EmptyComingSoon(modifier =Modifier.weight(0.5f))
         }
 
         NavigationBar(modifier = Modifier.fillMaxWidth()) {

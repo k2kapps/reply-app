@@ -36,7 +36,6 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import com.example.reply.R
-import com.example.reply.SecondScreen
 import com.example.reply.*
 
 @Composable
@@ -74,9 +73,17 @@ fun ReplyAppContent(
                 navigateToDetail = navigateToDetail,
                 modifier = Modifier.weight(1f)
             )
-        } else {
-            EmptyComingSoon(modifier =Modifier.weight(0.5f))
         }
+      //  if (selectedDestination.value == ReplyRoute.ARTICLES)
+          {
+        //    RegisterScreen()
+        }
+        if (selectedDestination.value == ReplyRoute.DM) {
+            Textfield1(// navigateToDetail = navigateToDetail,
+            //     modifier =Modifier.weight(1f)
+            )
+        }
+    }
 
         NavigationBar(modifier = Modifier.fillMaxWidth()) {
             TOP_LEVEL_DESTINATIONS.forEach { replyDestination ->
@@ -101,7 +108,7 @@ fun ReplyAppContent(
             }
         }
     }
-}
+
 
 
 object ReplyRoute {
@@ -139,7 +146,7 @@ val TOP_LEVEL_DESTINATIONS = listOf(
         selectedIcon = Icons.Outlined.ChatBubbleOutline,
         unselectedIcon = Icons.Outlined.ChatBubbleOutline,
         iconTextId = R.string.tab_inbox,
-        iconLabel = "Message"
+        iconLabel = "Add Listing"
     ),
     ReplyTopLevelDestination(
         route = ReplyRoute.GROUPS,

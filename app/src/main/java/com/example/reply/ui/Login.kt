@@ -7,21 +7,11 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.Button
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -41,13 +31,12 @@ import androidx.compose.ui.unit.sp
 import com.example.reply.ui.AccountsViewModel
 import com.example.reply.ui.Client
 import com.example.reply.ui.ui.theme.ReplyTheme
-import androidx.compose.material3.DatePicker
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Text
-import androidx.compose.material3.rememberDatePickerState
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
+import androidx.core.content.ContextCompat.startActivity
+import com.example.reply.AccountViewModel2
 import com.example.reply.ui.Client.client
 
 private lateinit var viewModel: AccountsViewModel
@@ -148,13 +137,17 @@ fun RegisterPassword(emailState : TextFieldState = remember { TextFieldState() }
     OutlinedTextField(
         value = password,
         onValueChange = { password = it },
-        shape = RoundedCornerShape(topEnd =8.dp, topStart =8.dp, bottomStart =8.dp, bottomEnd =8.dp),
+        shape = RoundedCornerShape(topEnd = 8.dp,
+            topStart = 8.dp,
+            bottomStart = 8.dp,
+            bottomEnd = 8.dp),
         label = {
             Text(
                 "Enter Password",
                 color = MaterialTheme.colorScheme.primary,
                 style = MaterialTheme.typography.labelMedium,
-            ) },
+            )
+        },
         visualTransformation =
         if (passwordHidden) PasswordVisualTransformation() else VisualTransformation.None,
         //  keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
@@ -171,29 +164,67 @@ fun RegisterPassword(emailState : TextFieldState = remember { TextFieldState() }
             }
         )
     )
-    Spacer(modifier = Modifier.height(40.dp))
-        Button(onClick = {
-            //your onclick code here
-            viewModel = AccountsViewModel()
-            var data:Int=0
-            var n1= viewModel.onLogin(text1, password)
-            //Log.i("data",text1+"----"+password)
-            /*
+    Spacer(modifier = Modifier.height(20.dp))
+    Button(onClick = {
+        //your onclick code here
+        viewModel = AccountsViewModel()
+        var data: Int = 0
+        var n1 = viewModel.onLogin(text1, password)
+        //Log.i("data",text1+"----"+password)
+        /*
             if (n1==2){
                 Toast.makeText(context, "Error...", Toast.LENGTH_SHORT).show()
             }
             if (n1==1){
                 Toast.makeText(context, "Succuss...", Toast.LENGTH_SHORT).show()
             }*/
-            context.startActivity(Intent(context, MainActivity::class.java))
-        }) {
-            Text(text = "Click Next",
-            fontSize = 20.sp)
+        context.startActivity(Intent(context, MainActivity::class.java))
+    }) {
+        Text(text = "Log in", modifier = Modifier.fillMaxWidth(0.8f),
+            fontSize = 20.sp, textAlign = TextAlign.Center)
+    }
+    Spacer(
+        modifier = Modifier.height(20.dp))
+    Column(
+        modifier = Modifier
+            // .fillMaxSize()
+            .padding(bottom = 290.dp)
+            .padding(horizontal = 0.dp),
+        verticalArrangement = Arrangement.Top,
+        horizontalAlignment = Alignment.Start,
+    )
+    {
+        Row() {
+            Text(text = "Don't have account ?", color = Color.Red)
+            Text(text = "Create new account ", color = Color.Black,
+                textAlign = TextAlign.Center,
+                fontSize = 15.sp)
+        }
+        Spacer(modifier = Modifier.height(20.dp))
+        Column(modifier = Modifier
+            .fillMaxSize()
+            .padding(bottom = 0.dp)
+            .padding(horizontal = 60.dp),
+            verticalArrangement = Arrangement.Bottom,
+            horizontalAlignment = Alignment.End) {
+            Button(onClick = {
+                //  AccountViewModel2()
+                //context.startActivity(Intent(context, MainActivity::class.java))
+            },
+                colors = ButtonDefaults.buttonColors(
+                    contentColor = Color.White,
+                ),
+                shape = RoundedCornerShape(60.dp)
+            ) {
+                Text(text = "Sign up",
+                    fontSize = 15.sp)
+
+            }
         }
 
     }
 
-
+}
 
 
 

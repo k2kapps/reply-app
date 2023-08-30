@@ -1,9 +1,9 @@
 package com.example.reply
 
-import android.content.Context
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.material.icons.filled.KeyboardArrowUp
@@ -17,112 +17,17 @@ import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.toSize
+import java.util.*
 
 @Composable
-fun RegisterScreen() {
-
+fun Textfield1(closeDetailScreen: () -> Unit, navigateToDetail: (Long) -> Unit, modifier: Modifier) {
     Column(modifier = Modifier
         .fillMaxSize()
-        .padding(10.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        var userName = remember { mutableStateOf("") }
-        var userEmail = remember { mutableStateOf("") }
-        var userPhone = remember { mutableStateOf("") }
-        var userAddress = remember { mutableStateOf("") }
-        var userPassword = remember { mutableStateOf("") }
-        var userConfirmPassword = remember { mutableStateOf("") }
-
-        Text(
-            text = "Sign Up", fontSize =35.sp,
-            fontWeight = FontWeight.Bold)
-        Spacer(modifier = Modifier.height(10.dp))
-
-           OutlinedTextField(value = userName.value,
-               onValueChange ={userName.value = it},
-               label = { Text(text = "Name") },
-               placeholder = { Text(text = "Your Name") },
-               singleLine = true,
-               modifier = Modifier.fillMaxWidth(0.8f)
-               )
-               Spacer(modifier = Modifier.height(10.dp))
-
-           OutlinedTextField(
-               value = userEmail.value,
-               onValueChange = { userEmail.value = it },
-               label = { Text(text = "Email") },
-               placeholder = { Text(text = "email@gmail.com") },
-               singleLine = true,
-               modifier = Modifier.fillMaxWidth(0.8f)
-        )
-        Spacer(modifier = Modifier.height(10.dp))
-        OutlinedTextField(
-            value = userPhone.value,
-            onValueChange = { userPhone.value = it },
-            label = { Text(text = "Phone") },
-            placeholder = { Text(text = "1234567890") },
-            singleLine = true,
-            modifier = Modifier.fillMaxWidth(0.8f),
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone)
-        )
-        Spacer(modifier = Modifier.height(10.dp))
-        OutlinedTextField(
-            value = userAddress.value,
-            onValueChange = { userAddress.value = it },
-            label = { Text(text = "Address") },
-            placeholder = { Text(text = "Type your address") },
-            singleLine = false,
-            modifier = Modifier
-                .fillMaxWidth(0.8f)
-                .fillMaxHeight(0.3f),
-        )
-        Spacer(modifier = Modifier.height(10.dp))
-        OutlinedTextField(
-            value = userPassword.value,
-            onValueChange = { userPassword.value = it },
-            label = { Text(text = "Password") },
-            placeholder = { Text(text = "") },
-            singleLine = true,
-            modifier = Modifier.fillMaxWidth(0.8f),
-        )
-        Spacer(modifier = Modifier.height(10.dp))
-        OutlinedTextField(
-            value = userConfirmPassword.value,
-            onValueChange = { userConfirmPassword.value = it },
-            label = { Text(text = "Confirm/Password") },
-            placeholder = { Text(text = "") },
-            singleLine = true,
-            modifier = Modifier.fillMaxWidth(0.8f),
-        )
-        Spacer(modifier = Modifier.height(20.dp))
-
-        Button(onClick = {
-            if (userName.value.isEmpty()){
-                // Toast.makeText(context," Please Enter Name", Toast.LENGTH_SHORT).show()
-            }else if (userPhone.value.isEmpty()){
-                //Toast.makeText(context,"Enter Number", Toast.LENGTH_SHORT).show()
-            }else if (userPassword.value.isEmpty()) {
-                //Toast.makeText(context, "Enter Password", Toast.LENGTH_SHORT).show()
-            }else{
-                //Toast.makeText(context,"Validation Successfully Completed", Toast.LENGTH_SHORT).show()
-            }
-        },
-            modifier = Modifier.fillMaxWidth(0.5f)
-        ) {
-            Text(text = "Save", fontSize = 18.sp, fontWeight = FontWeight.Bold)
-        }
-    }
-}
-@Composable
-fun Textfield1() {
-    Column(modifier = Modifier
-        .fillMaxSize()
-        .padding(horizontal = 10.dp)
+        .padding(horizontal = 20.dp)
         .padding(vertical = 90.dp)
     ) {
         var text by remember { mutableStateOf("type here...") }
@@ -163,6 +68,7 @@ fun Textfield1() {
             Droplist1()
            Spacer(modifier = Modifier.height(10.dp))
             Droplist2()
+
         }
     }
 }
@@ -216,13 +122,14 @@ fun Droplist1() {
                     selectedItem = label
                     expanded = false
                 }) {
-                   // Text(text = label)
+                    //Text(text = label)
                 }
             }
         }
     }
 }
-fun DropdownMenuItem(onClick: () -> Unit, interactionSource: () -> Unit) {
+
+ fun DropdownMenuItem(onClick: () -> Unit, interactionSource: () -> Unit) {
 
 }
 
@@ -270,13 +177,24 @@ fun Droplist2(){
                 DropdownMenuItem(onClick = {selectedItem = label
                     expanded = false
                 }) {
-                  //  Text(text = label)
+                   // Text(text = label)
 
                 }
             }
         }
     }
+    Column(modifier = Modifier.fillMaxSize()
+        .padding(20.dp),
+    verticalArrangement = Arrangement.Bottom, horizontalAlignment = Alignment.End) {
+        Button(onClick = {})
+        {
+          Text(text = "Save",modifier = Modifier.fillMaxWidth(0.6f),
+              fontSize = 20.sp, textAlign = TextAlign.Center)
+        }
+
+    }
 }
+
 
 
 //fun OutlinedTextField(

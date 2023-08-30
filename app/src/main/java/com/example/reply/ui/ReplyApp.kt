@@ -74,13 +74,11 @@ fun ReplyAppContent(
                 modifier = Modifier.weight(1f)
             )
         }
-      //  if (selectedDestination.value == ReplyRoute.ARTICLES)
-          {
-        //    RegisterScreen()
-        }
         if (selectedDestination.value == ReplyRoute.DM) {
-            Textfield1(// navigateToDetail = navigateToDetail,
-            //     modifier =Modifier.weight(1f)
+            Textfield1(
+                closeDetailScreen = closeDetailScreen,
+                navigateToDetail = navigateToDetail,
+                modifier = Modifier.weight(1f)
             )
         }
     }

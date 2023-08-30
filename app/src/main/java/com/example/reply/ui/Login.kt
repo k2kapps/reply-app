@@ -36,7 +36,6 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.core.content.ContextCompat.startActivity
-import com.example.reply.AccountViewModel2
 import com.example.reply.ui.Client.client
 
 private lateinit var viewModel: AccountsViewModel
@@ -127,7 +126,6 @@ fun RegisterEmail() {
 
 }
 
-
 @Composable
 fun RegisterPassword(emailState : TextFieldState = remember { TextFieldState() }) {
     //val keyboardController = LocalSoftwareKeyboardController.current
@@ -180,7 +178,7 @@ fun RegisterPassword(emailState : TextFieldState = remember { TextFieldState() }
             }*/
         context.startActivity(Intent(context, MainActivity::class.java))
     }) {
-        Text(text = "Log in", modifier = Modifier.fillMaxWidth(0.8f),
+        Text(text = "Log in", modifier = Modifier.fillMaxWidth(0.6f),
             fontSize = 20.sp, textAlign = TextAlign.Center)
     }
     Spacer(
@@ -204,12 +202,11 @@ fun RegisterPassword(emailState : TextFieldState = remember { TextFieldState() }
         Column(modifier = Modifier
             .fillMaxSize()
             .padding(bottom = 0.dp)
-            .padding(horizontal = 60.dp),
+            .padding(horizontal = 10.dp),
             verticalArrangement = Arrangement.Bottom,
             horizontalAlignment = Alignment.End) {
             Button(onClick = {
-                //  AccountViewModel2()
-                //context.startActivity(Intent(context, MainActivity::class.java))
+                context.startActivity(Intent(context, SignUp::class.java))
             },
                 colors = ButtonDefaults.buttonColors(
                     contentColor = Color.White,
@@ -217,8 +214,7 @@ fun RegisterPassword(emailState : TextFieldState = remember { TextFieldState() }
                 shape = RoundedCornerShape(60.dp)
             ) {
                 Text(text = "Sign up",
-                    fontSize = 15.sp)
-
+                    fontSize = 16.sp)
             }
         }
 
